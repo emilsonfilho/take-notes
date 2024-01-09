@@ -1,0 +1,205 @@
+openapi: 3.0.3
+info:
+  title: TakeNotes
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8090'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/notes:
+    get:
+      summary: 'Display a listing of the notes'
+      operationId: displayAListingOfTheNotes
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      title: Dr.
+                      content: 'Minus itaque laboriosam suscipit dolorem dolore. Veritatis est explicabo provident aperiam incidunt earum corporis ipsum. Et vel voluptas qui accusamus.'
+                    -
+                      id: 12
+                      title: quod
+                      content: ghteghtd
+                    -
+                      id: 22
+                      title: eum
+                      content: fazpxytxidsfd
+                    -
+                      id: 25
+                      title: eum
+                      content: fazpxytxidsfd
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: Dr.
+                        content: 'Minus itaque laboriosam suscipit dolorem dolore. Veritatis est explicabo provident aperiam incidunt earum corporis ipsum. Et vel voluptas qui accusamus.'
+                      -
+                        id: 12
+                        title: quod
+                        content: ghteghtd
+                      -
+                        id: 22
+                        title: eum
+                        content: fazpxytxidsfd
+                      -
+                        id: 25
+                        title: eum
+                        content: fazpxytxidsfd
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: Dr.
+                        content:
+                          type: string
+                          example: 'Minus itaque laboriosam suscipit dolorem dolore. Veritatis est explicabo provident aperiam incidunt earum corporis ipsum. Et vel voluptas qui accusamus.'
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created notes in storage.'
+      operationId: storeANewlyCreatedNotesInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: dolorem
+                content:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: jefqbywwovkqefrwbu
+              required:
+                - content
+      security: []
+  '/api/notes/{id}':
+    get:
+      summary: 'Display the specified note.'
+      operationId: displayTheSpecifiedNote
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    title: Dr.
+                    content: 'Minus itaque laboriosam suscipit dolorem dolore. Veritatis est explicabo provident aperiam incidunt earum corporis ipsum. Et vel voluptas qui accusamus.'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: Dr.
+                      content:
+                        type: string
+                        example: 'Minus itaque laboriosam suscipit dolorem dolore. Veritatis est explicabo provident aperiam incidunt earum corporis ipsum. Et vel voluptas qui accusamus.'
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: 'Update the specified note in storage.'
+      operationId: updateTheSpecifiedNoteInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: non
+                content:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: aghvc
+              required:
+                - content
+      security: []
+    delete:
+      summary: 'Remove the specified note from storage.'
+      operationId: removeTheSpecifiedNoteFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the note.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
